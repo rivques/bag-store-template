@@ -17,18 +17,17 @@ In the terminal, type `npm i` and hit enter.
 ## Create config.json
 Copy the `config.json.example` file on the left sidebar and rename it to `config.json`. This is where all of your API keys will go, as well as settings like what you'll be selling. We'll fill it up over the next few steps.
 ## Set up Slack app
-First, we need to get ourselves a Slack app. Head to the [Your Slack Apps](https://api.slack.com/apps) page and hit "Create New App," then "From App Manifest."
+First, we need to get ourselves a Slack app. Head to the [Your Slack Apps](https://api.slack.com/apps) page and hit "Create New App," then "From App Manifest." Pick Hack Club as the workspace, then paste the contents of `slack_maifest.json` into the window. Change `YOUR BOT NAME` to whatever your bot is called and hit Next, then Create. Click the big green Install to Workspace button and install it into Hack Club. Once you're back on the Basic Information page, scroll down to App Tokens and hit Generate Token and Scopes. Name the token Socket Mode and give it the `connections:write`. Hit the Generate button and then copy the resulting token. Paste it in SLACK_APP_TOKEN in `config.json`. Next, head to the OAuth and Permissions section of the app settings and copy your bot user token. Paste it in SLACK_BOT_TOKEN.
 ## Set up Bag app
 Next, we need to register an app with Bag. Head to the Slack and run /bot somewhere. Enter your bot's name, then choose "public" and "read," and hit "create."
 
 ![screenshot of Bag app creation dialog](https://github.com/rivques/RPGPT/assets/38469076/f6e7ff0a-c076-49a5-8687-a2b1cf286db1)
 
 Bag should immediately DM you an app ID and app token. Put the app ID in your `config.json` file next to `"BAG_APP_ID": `. Put the app token in to `BAG_APP_KEY`, replacing the example key. While you're in the Slack, click on your profile picture in the bottom left, then click "profile." Select the three vertical dots in the menu that pops up, then pick "Copy member ID." Paste this next to `YOUR_USER_ID` in the `config.json` file.
-## Finish setting up Slack app
-Head back to the Slack app page and hit "Install to workspace," then "Allow." Now, when you go back to "OAuth & Permissions," you should see a "Bot User OAuth Token." Copy that and put it in your `config.json` file for `SLACK_BOT_TOKEN`.
-
+## Choose your character
+## Test it
 Now, it's time to start your bot. In the terminal, run `npm start`. Head to #market and give your bot a mention, and make sure it works.
-## Set up to run 
+## Set up to run forever
 Open bag-store.service. Replace where it says YOUR_DIRECTORY_HERE with the directory you're working in. (it'll probably look something like `/home/yournestusername/yourrepositoryname`.) Then, run the following in the terminal, one by one:
 ```
 cp bag-store.service ~/.config/systemd/user/bag-store.service
